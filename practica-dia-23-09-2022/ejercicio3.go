@@ -22,11 +22,7 @@ func main() {
 
 }
 
-
-
-
 //el nombre de una variable 1nombre no se puede iniciar por un numero.
-
 
 // edad tambien esta mal puesto que primero es la variable.
 

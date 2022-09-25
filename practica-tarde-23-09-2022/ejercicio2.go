@@ -34,9 +34,6 @@ func main() {
 			continue
 		} 
 		fmt.Printf("lo sentimos no se le puede prestar a: %s\n", slice.name)
-
-
 	}
-
 }
 

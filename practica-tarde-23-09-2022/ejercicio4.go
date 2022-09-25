@@ -16,6 +16,7 @@ func main() {
 		}
 	}
 	fmt.Println("total de empleados mayores a 21 son: ", counter)
+	fmt.Println("Nombre: Benjamin", "edad: ", employees["Benjamin"])
 	employees["federico"] = 25
 	delete(employees, "Pedro")
 	fmt.Println(employees)
