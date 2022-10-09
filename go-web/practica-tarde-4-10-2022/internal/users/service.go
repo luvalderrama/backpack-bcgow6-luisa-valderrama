@@ -5,6 +5,8 @@ type Service interface{
 	GetAll() ([]User)
 	GetById(id int) (User, error)
 	Update(id int, nombre string, apellido string, correo string, edad int, activo bool, fechaCreacion string)(User, error)
+	Delete(id int)error
+	Patch(id int, nombre string, apellido string)(User, error)
 }
 
 type service struct {
@@ -65,6 +67,14 @@ func (s *service) Update(
 		activo,
 		fechaCreacion,
 	)
+}
+
+func (s *service) Patch(id int, nombre string, apellido string)(User, error) {
+	return s.repository.Patch(id, nombre, apellido)
+}
+
+func (s *service) Delete(id int) error{
+	return s.repository.Delete(id)
 }
 
 

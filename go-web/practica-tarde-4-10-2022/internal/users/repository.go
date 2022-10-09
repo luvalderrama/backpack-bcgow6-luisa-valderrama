@@ -23,6 +23,8 @@ type Repository interface {
 	GetById(id int)(User, error)
 	Update(id int, nombre string, apellido string, correo string, edad int, activo bool, fechaCreacion string)(User, error)
 	LastId()(int)
+	Delete(id int)error
+	Patch(id int, nombre string, apellido string)(User, error)
 }//interfaz que define los metodos que deben tener la clase que la implementen
 
 
@@ -70,8 +72,10 @@ func (r *repository) GetById(id int) (User, error) {
 }
 
 func (r *repository) LastId() (int) {
-	return len(usuarios)
-
+	if len(usuarios) == 0 {
+		return 0
+	}
+	return usuarios[len(usuarios)-1].Id
 }
 
 func (r *repository) Update(
@@ -108,4 +112,31 @@ func (r *repository) Update(
 	}
 
 	return usuario, nil
+}
+
+func (r *repository) Patch(id int, nombre string, apellido string) (User, error) {
+	update := false
+	var usuario User
+	for i := range usuarios{
+		if usuarios[i].Id == id {
+			usuarios[i].Nombre = nombre
+			usuarios[i].Apellido = apellido
+			update = true
+			usuario = usuarios[i]
+		}
+	}
+	if !update {
+		return User{}, fmt.Errorf("user %d not found", id)
+	}
+	return usuario, nil
+}
+
+func (r *repository) Delete(id int) error {
+	for index := range usuarios {
+		if usuarios[index].Id == id {
+			usuarios = append(usuarios[:index], usuarios[index + 1:]...)
+			return nil
+		}
+	}
+	return fmt.Errorf("user %d not found", id)
 }

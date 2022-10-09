@@ -29,6 +29,13 @@ func (r *request) Validate() error {
 	)
 }
 
+func (r *request) ValidatePatch() error {
+	return validation.ValidateStruct(r,
+		validation.Field(&r.Nombre, validation.Required),
+		validation.Field(&r.Apellido, validation.Required),
+	)
+}
+
 type User struct {
 	service users.Service
 	// nombre que le llamo al package que se llama users y Service es el contracto
@@ -101,6 +108,39 @@ func (c *User) Update() gin.HandlerFunc {
 	}
 }
 
+func (c *User) Patch() gin.HandlerFunc {
+	return func(ctx *gin.Context){
+		token := ctx.GetHeader("token")
+		if token != "luisuiie23" {
+			ctx.JSON(http.StatusUnauthorized, gin.H{"error": "no tiene permiso para realizar la peticion solicitada"})
+			return
+		}
+		id, err := strconv.ParseInt(ctx.Param("id"), 10, 64)
+		if err != nil {
+			ctx.JSON(http.StatusBadRequest, gin.H{"error": "invalid ID"})
+			return
+		}
+		var req request
+		err = ctx.ShouldBindJSON(&req)
+		if err != nil {
+			ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		err = req.ValidatePatch()
+		if err != nil {
+			ctx.JSON(http.StatusBadRequest, gin.H{"mesage": err.Error()})
+			return
+		}
+		usuario, err := c.service.Patch(int(id), req.Nombre, req.Apellido)
+		if err != nil {
+			ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		ctx.JSON(http.StatusOK, usuario)
+	}
+}
+
 func (c *User) GetAll() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		token := ctx.GetHeader("token")
@@ -131,5 +171,26 @@ func (c *User) GetById() gin.HandlerFunc {
 			return
 		}
 		ctx.JSON(http.StatusOK, usuario)
+	}
+}
+
+func (c *User) Delete() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		token := ctx.GetHeader("token")
+		if token != "luisuiie23" {
+			ctx.JSON(http.StatusUnauthorized, gin.H{"error": "no tiene permiso para realizar la peticion solicitada"})
+			return
+		}
+		id, err := strconv.ParseInt(ctx.Param("id"), 10, 64)
+		if err != nil {
+			ctx.JSON(http.StatusBadRequest, gin.H{"error": "invalid ID"})
+			return
+		}
+		err = c.service.Delete((int(id)))
+		if err != nil {
+			ctx.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
+		}
+		
+		ctx.JSON(http.StatusOK, gin.H{"mesage": "el usuario fue eliminado"})
 	}
 }
