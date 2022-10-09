@@ -1,0 +1,22 @@
+{
+    "usuarios": [
+        {
+            "id": 1,
+            "nombre":"luisa",
+            "apellido": "valderrama",
+            "correo" : "luisa@gmail.com",
+            "edad" : 19,
+            "activo": true,
+            "fechaDeCreacion": "03-10-2022"
+        },
+        {
+            "id": 2,
+            "nombre": "luisa",
+            "apellido": "valderrama",
+            "correo" : "luisa@gmail.com",
+            "edad" : 19,
+            "activo": true,
+            "fechaDeCreacion": "03-10-2022"
+        }
+    ]
+}

@@ -4,11 +4,12 @@ import "fmt"
 
 func main() {
 	var employees = map[string]int{
-	"Benjamin": 20,
-	"Nahuel": 26,
-	"Brenda": 19,
-	"Darío": 44, 
-	"Pedro": 30}
+		"Benjamin": 20,
+		"Nahuel": 26,
+		"Brenda": 19,
+		"Darío": 44, 
+		"Pedro": 30,
+	}
 	var counter int
 	for value := range employees { 
 		if employees[value] > 21{

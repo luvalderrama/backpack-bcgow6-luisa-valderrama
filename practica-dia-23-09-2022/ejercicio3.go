@@ -4,10 +4,10 @@ import "fmt"
 
 func main() {
   var (
-	nombre string
-	apellido string
-	edad int
-	estaturaDeLaPersona float64
+    nombre string
+    apellido string
+    edad int
+    estaturaDeLaPersona float64
   )	 
 
   nombre = "luisa"
@@ -17,6 +17,7 @@ func main() {
   licenciaDeConducir := true
   estaturaDeLaPersona = 1.68
   cantidadDeHijos := 2
+  nombre = "Pepe"
 
   fmt.Println(nombre, apellido, edad, apellidoSegundo, licenciaDeConducir, estaturaDeLaPersona, cantidadDeHijos)
 

@@ -2,40 +2,40 @@ package main
 
 import "fmt"
 
-type Usuario struct {
-	nombre string
-	apellido string
-	edad int
-	correo string
-	contrasenia string
+type User struct {
+	name string
+	lastname string
+	age int
+	email string
+	password string
 }
 
-func (u *Usuario) CambiarNombre(nombre, apellido string) {
-	u.nombre = nombre
-	u.apellido = apellido
+func (u *User) UpdateName(name, lastname string) {
+	u.name = name
+	u.lastname = lastname
 }
 
-func (u *Usuario) CambiarEdad(edad int) {
-	u.edad = edad
+func (u *User) UpdateAge(age int) {
+	u.age = age
 }
 
-func (u *Usuario) CambiarCorreo(correo string) {
-	u.correo = correo
+func (u *User) UpdateEmail(email string) {
+	u.email = email
 }
 
-func (u *Usuario) CambiarContrasenia(contrasenia string) {
-	u.contrasenia = contrasenia
+func (u *User) UpdatePassword(password string) {
+	u.password = password
 }
 
 func main() {
-	usuario := Usuario{
-		nombre: "luisa",
-		apellido: "valderrama",
-		edad: 18,
-		correo: "luvalde@gmail.com",
-		contrasenia: "jsjdkk",
+	user := User{
+		name: "luisa",
+		lastname: "valderrama",
+		age: 18,
+		email: "luvalde@gmail.com",
+		password: "jsjdkk",
 	}
-	fmt.Println(usuario)
-	usuario.CambiarNombre("juan", "pablo")
-	fmt.Println(usuario)
+	fmt.Println(user)
+	user.UpdateName("juan", "pablo")
+	fmt.Println(user)
 }
