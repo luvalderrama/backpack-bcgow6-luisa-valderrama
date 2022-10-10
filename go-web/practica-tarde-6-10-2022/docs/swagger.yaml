@@ -31,18 +31,18 @@ info:
     email: support@swagger.io
     name: API Support Digital House
     url: http://www.swagger.io/support
-  description: This is a simple API development by Digital House's team.
+  description: users crud.
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: https://developers.mercadolibre.com.ar/es_ar/terminos-y-condiciones
-  title: Bootcamp Go Wave 6 - API
+  title: Practica 6
   version: "1.0"
 paths:
   /usuarios:
     post:
       parameters:
-      - description: token invalido
+      - description: token
         in: header
         name: token
         required: true
@@ -142,7 +142,7 @@ paths:
       - users
     patch:
       parameters:
-      - description: token invalido
+      - description: token
         in: header
         name: token
         required: true
@@ -182,7 +182,7 @@ paths:
       - users
     put:
       parameters:
-      - description: token invalido
+      - description: token
         in: header
         name: token
         required: true

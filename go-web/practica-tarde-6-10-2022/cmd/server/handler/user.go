@@ -53,7 +53,7 @@ func NewUser(u users.Service) *User {
 // @Summary  CrearUsuario User
 // @Tags     users
 // @Produce  json
-// @Param    token    header    string          true  "token invalido"
+// @Param    token    header    string          true  "token"
 // @Param    user     body      request  true  "User to CrearUsuario"
 // @Success  200      {object}  web.Response
 // @Failure  401      {object}  web.Response
@@ -92,7 +92,7 @@ func (c *User) CrearUsuario() gin.HandlerFunc {
 // @Summary  Update User
 // @Tags     users
 // @Produce  json
-// @Param    token    header    string          true  "token invalido"
+// @Param    token    header    string          true  "token"
 // @Param    id       path      int             true   "Id User"
 // @Param    user     body      request  true  "User to CrearUsuario"
 // @Success  200      {object}  web.Response
@@ -136,7 +136,7 @@ func (c *User) Update() gin.HandlerFunc {
 // @Summary  patch User
 // @Tags     users
 // @Produce  json
-// @Param    token    header    string          true  "token invalido"
+// @Param    token    header    string          true  "token"
 // @Param    id       path      int             true   "Id User"
 // @Param    user     body      request  true  "User to Patch"
 // @Success  200      {object}  web.Response

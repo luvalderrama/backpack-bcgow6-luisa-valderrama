@@ -37,7 +37,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "token invalido",
+                        "description": "token",
                         "name": "token",
                         "in": "header",
                         "required": true
@@ -174,7 +174,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "token invalido",
+                        "description": "token",
                         "name": "token",
                         "in": "header",
                         "required": true
@@ -282,7 +282,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "token invalido",
+                        "description": "token",
                         "name": "token",
                         "in": "header",
                         "required": true
@@ -381,8 +381,8 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:8080",
 	BasePath:         "/api/v1",
 	Schemes:          []string{},
-	Title:            "Bootcamp Go Wave 6 - API",
-	Description:      "This is a simple API development by Digital House's team.",
+	Title:            "Practica 6",
+	Description:      "users crud.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }
