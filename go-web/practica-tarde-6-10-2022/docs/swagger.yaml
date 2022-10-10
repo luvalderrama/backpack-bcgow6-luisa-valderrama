@@ -1,0 +1,245 @@
+basePath: /api/v1
+definitions:
+  handler.request:
+    properties:
+      activo:
+        type: boolean
+      apellido:
+        type: string
+      correo:
+        type: string
+      edad:
+        type: integer
+      fechaCreacion:
+        type: string
+      id:
+        type: integer
+      nombre:
+        type: string
+    type: object
+  web.Response:
+    properties:
+      code:
+        type: string
+      data: {}
+      error:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support Digital House
+    url: http://www.swagger.io/support
+  description: This is a simple API development by Digital House's team.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: https://developers.mercadolibre.com.ar/es_ar/terminos-y-condiciones
+  title: Bootcamp Go Wave 6 - API
+  version: "1.0"
+paths:
+  /usuarios:
+    post:
+      parameters:
+      - description: token invalido
+        in: header
+        name: token
+        required: true
+        type: string
+      - description: User to CrearUsuario
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/handler.request'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/web.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/web.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/web.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/web.Response'
+      summary: CrearUsuario User
+      tags:
+      - users
+  /usuarios/{id}:
+    delete:
+      parameters:
+      - description: Id User
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Token
+        in: header
+        name: token
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/web.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/web.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/web.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/web.Response'
+      summary: Delete User
+      tags:
+      - users
+    get:
+      parameters:
+      - description: Id User
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Token
+        in: header
+        name: token
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/web.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/web.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/web.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/web.Response'
+      summary: GetById User
+      tags:
+      - users
+    patch:
+      parameters:
+      - description: token invalido
+        in: header
+        name: token
+        required: true
+        type: string
+      - description: Id User
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: User to Patch
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/handler.request'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/web.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/web.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/web.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/web.Response'
+      summary: patch User
+      tags:
+      - users
+    put:
+      parameters:
+      - description: token invalido
+        in: header
+        name: token
+        required: true
+        type: string
+      - description: Id User
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: User to CrearUsuario
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/handler.request'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/web.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/web.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/web.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/web.Response'
+      summary: Update User
+      tags:
+      - users
+  /usuarios/all:
+    get:
+      parameters:
+      - description: token
+        in: header
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List usuarios
+          schema:
+            $ref: '#/definitions/web.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/web.Response'
+      summary: GetAll User
+      tags:
+      - users
+swagger: "2.0"
